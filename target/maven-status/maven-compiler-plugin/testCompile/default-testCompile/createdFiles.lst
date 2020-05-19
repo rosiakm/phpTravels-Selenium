@@ -1,0 +1,13 @@
+Phptravels\pages\BasePage.class
+Phptravels\configuration\DriverManager.class
+Phptravels\helpers\WaitForElement.class
+Phptravels\configuration\DriverManager$1.class
+Phptravels\pages\Tours.class
+Phptravels\pages\Visa.class
+Phptravels\tests\MyTest.class
+Phptravels\pages\Flights.class
+Phptravels\pages\Cars.class
+Phptravels\configuration\DriverType.class
+Phptravels\pages\Results.class
+Phptravels\pages\Hotels.class
+Phptravels\tests\BaseTest.class
