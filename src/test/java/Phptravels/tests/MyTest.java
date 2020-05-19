@@ -8,10 +8,11 @@ public class MyTest extends BaseTest
     Hotels hotel = new Hotels();
 
     @Test
-    public void searchTest()
+    public void bookingHotelTest()
     {
         hotel.searchForHotel()
              .chooseHotel()
-             .bookHotel();
+             .bookHotel()
+             .fillFormWithValidData();
     }
 }
