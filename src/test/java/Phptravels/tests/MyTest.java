@@ -11,6 +11,7 @@ public class MyTest extends BaseTest
     public void bookingHotelTest()
     {
         hotel.searchForHotel()
+             .assertResults()
              .chooseHotel()
              .bookHotel()
              .fillFormWithValidData();
@@ -20,6 +21,7 @@ public class MyTest extends BaseTest
     public void bookingHotelWithInvalidDataTest()
     {
         hotel.searchForHotel()
+             .assertResults()
              .chooseHotel()
              .bookHotel()
              .fillFormWithInvalidData();

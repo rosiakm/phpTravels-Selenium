@@ -1,6 +1,7 @@
 package Phptravels.pages;
 
 import Phptravels.helpers.DataFaker;
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -74,5 +75,13 @@ public class PersonalDetails extends BasePage
         confirmBookingButton.click();
 
         return new Summary();
+    }
+
+    public PersonalDetails alertsAssertion()
+    {
+        Assertions.assertThat(alertsList).hasSizeGreaterThan(0);
+        Assertions.assertThat(alertsList.get(0).getText()).isEqualTo("Email is required");
+
+        return this;
     }
 }

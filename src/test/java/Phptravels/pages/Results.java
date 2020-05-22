@@ -1,5 +1,6 @@
 package Phptravels.pages;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -45,6 +46,13 @@ public class Results extends BasePage
         }
 
         return results;
+    }
+
+    public Results assertResults()
+    {
+        Assertions.assertThat(hotelsList).hasSizeGreaterThan(0);
+
+        return this;
     }
 
 }
