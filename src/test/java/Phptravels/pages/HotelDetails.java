@@ -18,7 +18,7 @@ public class HotelDetails extends BasePage
     @FindBy(css = "div[class='panel panel-default'] button[type='submit']")
     private WebElement bookNowButton;
 
-    @FindBy(xpath = "small/i[@class='star fa fa-star']")
+    @FindBy(xpath = "//small/i[@class='star fa fa-star']")
     private List<WebElement> starsList;
 
     JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();

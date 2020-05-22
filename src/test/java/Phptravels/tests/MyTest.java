@@ -13,6 +13,7 @@ public class MyTest extends BaseTest
         hotel.searchForHotel()
              .assertResults()
              .chooseHotel()
+             .hotelAssertion(3)
              .bookHotel()
              .fillFormWithValidData();
     }
@@ -23,7 +24,9 @@ public class MyTest extends BaseTest
         hotel.searchForHotel()
              .assertResults()
              .chooseHotel()
+             .hotelAssertion(3)
              .bookHotel()
-             .fillFormWithInvalidData();
+             .fillFormWithInvalidData()
+             .alertsAssertion();
     }
 }
