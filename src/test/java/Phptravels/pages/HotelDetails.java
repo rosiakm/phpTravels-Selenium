@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
+import static Phptravels.helpers.Screenshots.takeScreenshot;
 
 public class HotelDetails extends BasePage
 {
@@ -18,8 +19,10 @@ public class HotelDetails extends BasePage
 
     public PersonalDetails bookHotel()
     {
+        takeScreenshot(getSingleDriver());
         jse.executeScript("window.scrollBy(0,1200)");
         roomCheckbox.click();
+        takeScreenshot(getSingleDriver());
         bookNowButton.click();
 
         return new PersonalDetails();

@@ -14,7 +14,7 @@ public class DriverManager
 
     public static WebDriver getSingleDriver()
     {
-        if(null == driver)
+        if(driver == null)
         {
             getDriverType(DriverType.CHROME);
             driver.manage().window().maximize();
@@ -52,7 +52,7 @@ public class DriverManager
 
     public static void quit()
     {
-        if(null != driver)
+        if(driver != null)
         {
             driver.quit();
         }

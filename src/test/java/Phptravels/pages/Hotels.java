@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+import static Phptravels.configuration.DriverManager.getSingleDriver;
+import static Phptravels.helpers.Screenshots.takeScreenshot;
 import static Phptravels.helpers.WaitForElement.waitForElementToBeDisplayed;
 
 public class Hotels extends BasePage
@@ -44,6 +46,7 @@ public class Hotels extends BasePage
 
     public Results searchForHotel()
     {
+        takeScreenshot(getSingleDriver());
         destinationInput.click();
         activeDestinationInput.sendKeys("Dubai");
         waitForElementToBeDisplayed(destinationsList);
@@ -55,8 +58,10 @@ public class Hotels extends BasePage
         adultMinusButton.click();
         adultPlusButton.click();
         travellersNumberInput.click();
+        takeScreenshot(getSingleDriver());
         searchButton.click();
 
         return new Results();
     }
+
 }

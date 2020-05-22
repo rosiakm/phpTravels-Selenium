@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="TestSuite" time="6.498" errors="0" skipped="0">
+<testsuite tests="2" failures="1" name="TestSuite" time="13.604" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="13.0.2+8"/>
@@ -62,5 +62,38 @@
     <property name="sun.stdout.encoding" value="cp852"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Phptravels.tests.MyTest" name="searchTest" time="6.498"/>
+  <testcase classname="Phptravels.tests.MyTest" name="bookingHotelTest" time="13.569"/>
+  <testcase classname="Phptravels.tests.MyTest" name="bookingHotelWithInvalidDataTest" time="0.035">
+    <failure message="Session ID is null. Using WebDriver after calling quit()?
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;RWAMW031586&apos;, ip: &apos;192.168.1.14&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
+Driver info: driver.version: RemoteWebDriver" type="org.openqa.selenium.NoSuchSessionException">org.openqa.selenium.NoSuchSessionException: Session ID is null. Using WebDriver after calling quit()?
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;RWAMW031586&apos;, ip: &apos;192.168.1.14&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;13.0.2&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:125)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at com.sun.proxy.$Proxy9.click(Unknown Source)
+	at Phptravels.pages.Hotels.searchForHotel(Hotels.java:47)
+	at Phptravels.tests.MyTest.bookingHotelWithInvalidDataTest(MyTest.java:22)
+</failure>
+    <system-err>[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 81.0.4044.138 (since Google Chrome 81 is installed in your machine)
+[main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\rosiakm\.m2\repository\webdriver\chromedriver\win32\81.0.4044.138\chromedriver.exe
+Starting ChromeDriver 81.0.4044.138 (8c6c7ba89cc9453625af54f11fd83179e23450fa-refs/branch-heads/4044@{#999}) on port 14729
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+maj 21, 2020 11:27:56 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+[1590053280.427][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590053280.926][SEVERE]: Timed out receiving message from renderer: 0.100
+[1590053282.298][SEVERE]: Timed out receiving message from renderer: 0.100
+</system-err>
+  </testcase>
 </testsuite>

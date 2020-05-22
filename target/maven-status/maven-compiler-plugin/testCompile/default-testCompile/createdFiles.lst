@@ -1,8 +1,12 @@
 Phptravels\pages\BasePage.class
 Phptravels\configuration\DriverManager.class
+Phptravels\pages\Summary.class
+Phptravels\pages\HotelDetails.class
 Phptravels\helpers\WaitForElement.class
+Phptravels\pages\PersonalDetails.class
 Phptravels\configuration\DriverManager$1.class
 Phptravels\pages\Tours.class
+Phptravels\helpers\DataFaker.class
 Phptravels\pages\Visa.class
 Phptravels\tests\MyTest.class
 Phptravels\pages\Flights.class

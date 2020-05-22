@@ -4,8 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import static Phptravels.configuration.DriverManager.getSingleDriver;
-import static Phptravels.configuration.DriverManager.quit;
+import static Phptravels.configuration.DriverManager.*;
 
 public class BaseTest
 {

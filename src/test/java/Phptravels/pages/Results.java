@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
+import static Phptravels.helpers.Screenshots.takeScreenshot;
 
 public class Results extends BasePage
 {
@@ -19,6 +20,7 @@ public class Results extends BasePage
 
     public HotelDetails chooseHotel()
     {
+        takeScreenshot(getSingleDriver());
         WebElement myHotel = getHotel(3).get(0);
         WebElement detailsButton = myHotel.findElement(By.xpath(".//button[contains(text(),'Details')]"));
         jse.executeScript("window.scrollBy(0,500)");
