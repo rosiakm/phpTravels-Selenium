@@ -6,13 +6,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import static Phptravels.helpers.taskManagerProcessHelper.isProcessRunning;
+import static Phptravels.helpers.taskManagerProcessHelper.killProcess;
 
 public class DriverManager
 {
     private static WebDriver driver;
+    private static String processName = "chrome.exe";
 
-    public static WebDriver getSingleDriver()
+    public static WebDriver getSingleDriver() throws IOException
     {
         if(driver == null)
         {
@@ -25,12 +30,16 @@ public class DriverManager
         return driver;
     }
 
-    private static void getDriverType(DriverType driverType)
+    private static void getDriverType(DriverType driverType) throws IOException
     {
         switch (driverType)
         {
             case CHROME:
             {
+                if (isProcessRunning(processName))
+                {
+                    killProcess(processName);
+                }
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
             }

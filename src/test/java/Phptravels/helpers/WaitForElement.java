@@ -6,13 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
 
 public class WaitForElement
 {
-    public static void waitForElementToBeDisplayed(WebElement element)
+    public static void waitForElementToBeDisplayed(WebElement element) throws IOException
     {
         FluentWait<WebDriver> fluentWait = new FluentWait<>(getSingleDriver());
         fluentWait.withTimeout(Duration.ofSeconds(10))

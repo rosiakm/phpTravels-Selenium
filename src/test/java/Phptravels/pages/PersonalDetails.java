@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
@@ -38,10 +39,16 @@ public class PersonalDetails extends BasePage
     private WebElement confirmBookingButton;
 
     DataFaker dataFaker = new DataFaker();
-    JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
 
-    public void fillForm(boolean isValid)
+    public PersonalDetails() throws IOException
     {
+        super();
+    }
+
+    public void fillForm(boolean isValid) throws IOException
+    {
+        JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
+
         takeScreenshot(getSingleDriver());
         firstNameInput.sendKeys(dataFaker.getFirstName());
         lastNameInput.sendKeys(dataFaker.getLastName());
@@ -59,7 +66,7 @@ public class PersonalDetails extends BasePage
         jse.executeScript("window.scrollBy(0,250)");
     }
 
-    public PersonalDetails fillFormWithInvalidData()
+    public PersonalDetails fillFormWithInvalidData() throws IOException
     {
         fillForm(false);
         takeScreenshot(getSingleDriver());
@@ -68,7 +75,7 @@ public class PersonalDetails extends BasePage
         return this;
     }
 
-    public Summary fillFormWithValidData()
+    public Summary fillFormWithValidData() throws IOException
     {
         fillForm(true);
         takeScreenshot(getSingleDriver());

@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,15 @@ public class Results extends BasePage
     @FindBy(xpath = "//table[@class='bgwhite table table-striped']//tr")
     private List<WebElement> hotelsList;
 
-    JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
-
-    public HotelDetails chooseHotel()
+    public Results() throws IOException
     {
+        super();
+    }
+
+    public HotelDetails chooseHotel() throws IOException
+    {
+        JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
+
         takeScreenshot(getSingleDriver());
         WebElement myHotel = getHotel(3).get(0);
         WebElement detailsButton = myHotel.findElement(By.xpath(".//button[contains(text(),'Details')]"));

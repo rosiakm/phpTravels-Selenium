@@ -3,6 +3,7 @@ package Phptravels.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
@@ -44,7 +45,12 @@ public class Hotels extends BasePage
     @FindBy(css = "div[class='col-md-2 form-group go-right col-xs-12 search-button'] button")
     private WebElement searchButton;
 
-    public Results searchForHotel()
+    public Hotels() throws IOException
+    {
+        super();
+    }
+
+    public Results searchForHotel() throws IOException
     {
         takeScreenshot(getSingleDriver());
         destinationInput.click();

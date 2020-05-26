@@ -5,6 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.io.IOException;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
@@ -21,10 +22,15 @@ public class HotelDetails extends BasePage
     @FindBy(xpath = "//small/i[@class='star fa fa-star']")
     private List<WebElement> starsList;
 
-    JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
-
-    public PersonalDetails bookHotel()
+    public HotelDetails() throws IOException
     {
+        super();
+    }
+
+    public PersonalDetails bookHotel() throws IOException
+    {
+        JavascriptExecutor jse = (JavascriptExecutor) getSingleDriver();
+
         takeScreenshot(getSingleDriver());
         jse.executeScript("window.scrollBy(0,1200)");
         roomCheckbox.click();

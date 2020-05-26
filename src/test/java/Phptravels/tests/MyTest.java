@@ -3,12 +3,19 @@ package Phptravels.tests;
 import Phptravels.pages.Hotels;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 public class MyTest extends BaseTest
 {
     Hotels hotel = new Hotels();
 
+    public MyTest() throws IOException
+    {
+        super();
+    }
+
     @Test(priority = 1)
-    public void bookingHotelTest()
+    public void bookingHotelTest() throws IOException
     {
         hotel.searchForHotel()
              .assertResults()
@@ -19,7 +26,7 @@ public class MyTest extends BaseTest
     }
 
     @Test(priority = 2)
-    public void bookingHotelWithInvalidDataTest()
+    public void bookingHotelWithInvalidDataTest() throws IOException
     {
         hotel.searchForHotel()
              .assertResults()
