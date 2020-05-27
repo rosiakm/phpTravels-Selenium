@@ -5,10 +5,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class taskManagerProcessHelper
+public class taskManagerHelper
 {
     private static final String TASKLIST = "tasklist";
-    private static final String KILL = "taskkill /F /IM";
+    private static final String KILL = "taskkill /F /IM ";
 
     public static boolean isProcessRunning(String serviceName) throws IOException
     {
@@ -18,7 +18,7 @@ public class taskManagerProcessHelper
 
         while ((line = reader.readLine()) != null)
         {
-            System.out.println(line);
+            //System.out.println(line);
             if (line.contains(serviceName))
             {
                 return true;
@@ -31,5 +31,6 @@ public class taskManagerProcessHelper
     public static void killProcess(String serviceName) throws IOException
     {
         Runtime.getRuntime().exec(KILL + serviceName);
+        System.out.println(serviceName+" killed successfully!");
     }
 }

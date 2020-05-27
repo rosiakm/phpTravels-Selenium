@@ -9,8 +9,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static Phptravels.helpers.taskManagerProcessHelper.isProcessRunning;
-import static Phptravels.helpers.taskManagerProcessHelper.killProcess;
+import static Phptravels.helpers.taskManagerHelper.isProcessRunning;
+import static Phptravels.helpers.taskManagerHelper.killProcess;
 
 public class DriverManager
 {
@@ -36,9 +36,13 @@ public class DriverManager
         {
             case CHROME:
             {
-                if (isProcessRunning(processName))
+                if(isProcessRunning(processName))
                 {
                     killProcess(processName);
+                }
+                else
+                {
+                    System.out.println("Not able to find the process: " + processName);
                 }
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
