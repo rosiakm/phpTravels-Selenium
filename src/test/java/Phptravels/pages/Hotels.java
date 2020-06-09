@@ -1,12 +1,11 @@
 package Phptravels.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.io.IOException;
 import java.util.List;
 
-import static Phptravels.configuration.DriverManager.getSingleDriver;
 import static Phptravels.helpers.Screenshots.takeScreenshot;
 import static Phptravels.helpers.WaitForElement.waitForElementToBeDisplayed;
 
@@ -45,14 +44,17 @@ public class Hotels extends BasePage
     @FindBy(css = "div[class='col-md-2 form-group go-right col-xs-12 search-button'] button")
     private WebElement searchButton;
 
-    public Hotels() throws IOException
+    Logger logger = Logger.getLogger(Hotels.class);
+
+    public Hotels()
     {
         super();
     }
 
-    public Results searchForHotel() throws IOException
+    public Results searchForHotel()
     {
-        takeScreenshot(getSingleDriver());
+        logger.info("Populating search fields.");
+        takeScreenshot();
         destinationInput.click();
         activeDestinationInput.sendKeys("Dubai");
         waitForElementToBeDisplayed(destinationsList);
@@ -64,9 +66,12 @@ public class Hotels extends BasePage
         adultMinusButton.click();
         adultPlusButton.click();
         travellersNumberInput.click();
-        takeScreenshot(getSingleDriver());
+        logger.info("All fields populated.");
+        takeScreenshot();
         searchButton.click();
 
+        logger.info("Search button clicked.");
+        logger.info("Results page is going to be return.");
         return new Results();
     }
 

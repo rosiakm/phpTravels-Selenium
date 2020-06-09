@@ -1,12 +1,17 @@
 package Phptravels.pages;
 
-import java.io.IOException;
+import org.apache.log4j.Logger;
+
+import static Phptravels.helpers.Screenshots.takeScreenshot;
 
 public class Summary extends BasePage
 {
+    Logger logger = Logger.getLogger(Summary.class);
 
-    public Summary() throws IOException
+    public Summary()
     {
         super();
+        logger.info("New Summary page returned.");
+        takeScreenshot();
     }
 }
