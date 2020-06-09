@@ -91,6 +91,7 @@ public class Results extends BasePage
 
             radioButton.click();
             searchButton.click();
+
             if(starsNumberFilter == 1)
             {
                 waitForElementToBeDisplayed(noResultsMessage);
@@ -113,7 +114,7 @@ public class Results extends BasePage
             }
             else
             {
-                Assert.assertTrue(noResultsMessage.isDisplayed());
+                Assertions.assertThat(noResultsMessage.getText()).isEqualTo("No Results Found");
             }
         }
 
