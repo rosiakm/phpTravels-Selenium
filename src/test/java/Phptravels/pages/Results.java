@@ -6,13 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
 import static Phptravels.helpers.Screenshots.takeScreenshot;
+import static Phptravels.helpers.WaitForElement.waitForAllElementsToBeDisplayed;
 import static Phptravels.helpers.WaitForElement.waitForElementToBeDisplayed;
 
 public class Results extends BasePage
@@ -98,7 +98,7 @@ public class Results extends BasePage
             }
             else
             {
-                waitForElementToBeDisplayed(hotelsList);
+                waitForAllElementsToBeDisplayed(hotelsList);
             }
             takeScreenshot();
 

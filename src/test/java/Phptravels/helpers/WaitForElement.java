@@ -22,7 +22,7 @@ public class WaitForElement
         fluentWait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static void waitForElementToBeDisplayed(List<WebElement> elements)
+    public static void waitForAllElementsToBeDisplayed(List<WebElement> elements)
     {
         FluentWait<WebDriver> fluentWait = new FluentWait<>(getSingleDriver());
         fluentWait.withTimeout(Duration.ofSeconds(10))

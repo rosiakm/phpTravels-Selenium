@@ -17,7 +17,6 @@ public class FilterSearchTest extends BaseTest
     public void starGradeFilterTest()
     {
         new Hotels().searchForHotel()
-                    .assertResults()
                     .assertStarGradeFilter();
     }
 }

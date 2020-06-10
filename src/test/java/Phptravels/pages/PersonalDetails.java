@@ -3,11 +3,12 @@ package Phptravels.pages;
 import Phptravels.helpers.DataFaker;
 import org.apache.log4j.Logger;
 import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static Phptravels.configuration.DriverManager.getSingleDriver;
@@ -38,6 +39,21 @@ public class PersonalDetails extends BasePage
 
     @FindBy(css = ".form-group button[type='submit']")
     private WebElement confirmBookingButton;
+
+    @FindBy(xpath = "//table[@class='table table_summary'][1]//tr")
+    private List<WebElement> amountUnitsList;
+
+    @FindBy(xpath = "//form[@id='bookingdetails']//tbody//td[4]//span[contains(text(),'No')]")
+    private List<WebElement> orderButtonsFromExtrasList;
+
+    @FindBy(xpath = "//form[@id='bookingdetails']//tbody//td[2]/span")
+    private List<WebElement> itemsFromExtrasList;
+
+    @FindBy(xpath = "//form[@id='bookingdetails']//tbody//td[3]")
+    private List<WebElement> pricesFromExtrasList;
+
+    @FindBy(id = "displaytotal")
+    private WebElement totalAmount;
 
     DataFaker dataFaker = new DataFaker();
     Logger logger = Logger.getLogger(PersonalDetails.class);
@@ -100,5 +116,63 @@ public class PersonalDetails extends BasePage
         Assertions.assertThat(alertsList.get(0).getText()).isEqualTo("Email is required");
 
         return this;
+    }
+
+    public PersonalDetails amountTableAssertion() throws InterruptedException
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            double beforePrice = convertWebElementToInteger(totalAmount);
+            int units = amountUnitsList.size();
+            orderButtonsFromExtrasList.get(i).click();
+            Thread.sleep(2000);
+            int unitsAfterClick = amountUnitsList.size();
+            Assertions.assertThat(unitsAfterClick).isEqualTo(units+1);
+
+            String item = itemsFromExtrasList.get(i).getText();
+            List<String> unitNames = new ArrayList<>();
+            for(WebElement e : amountUnitsList)
+            {
+                String unit = e.findElement(By.xpath(".//td[1]")).getText();
+                unitNames.add(unit);
+            }
+            Assertions.assertThat(unitNames).contains(item);
+
+            double price = convertWebElementToInteger(pricesFromExtrasList.get(i));
+            double afterPrice = convertWebElementToInteger(totalAmount);
+            Assertions.assertThat(afterPrice).isEqualTo(beforePrice + 1.05*price);
+        }
+        for (int i = 1; i >= 0; i--)
+        {
+            double beforePrice = convertWebElementToInteger(totalAmount);
+            int units = amountUnitsList.size();
+            orderButtonsFromExtrasList.get(i).click();
+            Thread.sleep(2000);
+            int unitsAfterClick = amountUnitsList.size();
+            Assertions.assertThat(unitsAfterClick).isEqualTo(units-1);
+
+            String item = itemsFromExtrasList.get(i).getText();
+            List<String> unitNames = new ArrayList<>();
+            for(WebElement e : amountUnitsList)
+            {
+                String unit = e.findElement(By.xpath(".//td[1]")).getText();
+                unitNames.add(unit);
+            }
+            Assertions.assertThat(unitNames).doesNotContain(item);
+
+            double price = convertWebElementToInteger(pricesFromExtrasList.get(i));
+            double afterPrice = convertWebElementToInteger(totalAmount);
+            Assertions.assertThat(afterPrice).isEqualTo(beforePrice - 1.05*price);
+        }
+
+        return this;
+    }
+
+    public double convertWebElementToInteger (WebElement element)
+    {
+        String text = element.getText();
+        double i = Double.parseDouble(text);
+
+        return i;
     }
 }

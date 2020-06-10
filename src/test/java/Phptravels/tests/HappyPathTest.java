@@ -6,9 +6,9 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 @Listeners(Listener.class)
-public class MainFlowTest extends BaseTest
+public class HappyPathTest extends BaseTest
 {
-    public MainFlowTest()
+    public HappyPathTest()
     {
         super();
     }
