@@ -83,6 +83,8 @@ public class Results extends BasePage
 
     public Results assertStarGradeFilter()
     {
+        logger.info("Star grade filter checking");
+
         for (int i = 0; i < starGradeFilterList.size(); i++)
         {
             WebElement radioButton = starGradeFilterList.get(i).findElement(By.xpath(".//div[@class='iradio_square-grey']"));

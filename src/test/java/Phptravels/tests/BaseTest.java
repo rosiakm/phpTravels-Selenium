@@ -19,10 +19,10 @@ public class BaseTest
         driver = getSingleDriver();
     }
 
-    @AfterMethod
+    /*@AfterMethod
     public void tearDownDriver()
     {
         logger.info("Tear down chrome instance after method!");
         quit();
-    }
+    }*/
 }

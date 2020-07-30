@@ -120,6 +120,8 @@ public class PersonalDetails extends BasePage
 
     public PersonalDetails amountTableAssertion() throws InterruptedException
     {
+        logger.info("Amount table checking");
+
         for (int i = 0; i < 2; i++)
         {
             double beforePrice = convertWebElementToInteger(totalAmount);
